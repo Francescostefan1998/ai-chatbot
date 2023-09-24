@@ -5,6 +5,7 @@ import {
   BadRequestException,
   Post,
   Body,
+  Delete,
 } from '@nestjs/common';
 import { Types } from 'mongoose'; // Import Types from mongoose
 import { MessagesService } from './messages.service';
@@ -28,5 +29,12 @@ export class MessagesController {
       throw new BadRequestException('Invalid userId');
     }
     return this.messagesService.findByUserId(new Types.ObjectId(userId));
+  }
+
+  @Delete()
+  async deleteMessageById(@Query('messageId') messageId: string): Promise<any> {
+    return this.messagesService.deleteMessageById(
+      new Types.ObjectId(messageId),
+    );
   }
 }

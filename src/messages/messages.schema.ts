@@ -2,10 +2,10 @@ import { Schema, Document, Types } from 'mongoose';
 
 export const MessagesSchema = new Schema(
   {
-    text: String,
-    role: String,
+    text: { type: String, required: true },
+    role: { type: String, required: true },
 
-    userId: { type: Types.ObjectId, ref: 'User' },
+    userId: { type: Types.ObjectId, ref: 'User', require: true },
   },
   { timestamps: true },
 );

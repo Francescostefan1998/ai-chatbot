@@ -17,6 +17,10 @@ export class UsersController {
   async findAll(): Promise<any> {
     return await this.usersService.findAll();
   }
+  @Get(':username')
+  async findByUserName(@Param('username') username: string): Promise<any> {
+    return await this.usersService.findByUserName(username);
+  }
   @Post()
   async create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
