@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { SalutiController } from './saluti/saluti.controller';
 import { UsersModule } from './users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
+
+import { MessagesModule } from './messages/messages.module';
 
 @Module({
   imports: [
@@ -11,8 +12,10 @@ import { MongooseModule } from '@nestjs/mongoose';
     MongooseModule.forRoot(
       'mongodb+srv://Frank1998:ocsecnarf@cluster0.cv1nwwr.mongodb.net/aiChatBot?tls=true',
     ),
+
+    MessagesModule,
   ],
-  controllers: [AppController, SalutiController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

@@ -1,4 +1,4 @@
-import { Schema, Document } from 'mongoose';
+import { Schema, Document, Types } from 'mongoose';
 
 export const UsersSchema = new Schema(
   {
@@ -8,6 +8,7 @@ export const UsersSchema = new Schema(
     nationality: String,
     name: String,
     surname: String,
+    messages: [{ type: Types.ObjectId, ref: 'Message' }],
   },
   { timestamps: true },
 );
@@ -19,4 +20,5 @@ export interface UsersDocument extends Document {
   nationality: string;
   name: string;
   surname: string;
+  messages: Types.ObjectId[];
 }

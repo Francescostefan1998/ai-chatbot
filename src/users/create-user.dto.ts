@@ -1,3 +1,5 @@
+import { Types } from 'mongoose';
+
 export class CreateUserDto {
   readonly username: string;
   readonly password: string;
@@ -5,4 +7,5 @@ export class CreateUserDto {
   readonly nationality: string;
   readonly name: string;
   readonly surname: string;
+  readonly messages?: Types.ObjectId[];
 }
