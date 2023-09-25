@@ -5,7 +5,7 @@ export const UsersSchema = new Schema(
     username: { type: String, required: true },
     password: { type: String, required: true },
     age: Number,
-    nationality: String,
+    language: String,
     name: String,
     surname: String,
     messages: [{ type: Types.ObjectId, ref: 'Message' }],
@@ -17,7 +17,7 @@ export interface UsersDocument extends Document {
   username: string;
   password: string;
   age: number;
-  nationality: string;
+  language: string;
   name: string;
   surname: string;
   messages: Types.ObjectId[];

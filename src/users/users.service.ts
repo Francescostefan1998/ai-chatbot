@@ -51,6 +51,7 @@ export class UsersService {
     username: string,
     updateData: Partial<UsersDocument>,
   ): Promise<any> {
+    console.log('inside put user');
     return this.userModel
       .findOneAndUpdate({ username }, updateData, { new: true })
       .exec();
