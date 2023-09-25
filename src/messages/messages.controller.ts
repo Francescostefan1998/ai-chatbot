@@ -21,6 +21,7 @@ export class MessagesController {
   }
   @Post()
   async create(@Body() CreateMessageDto: CreateMessageDto) {
+    console.log('inside the post message');
     return this.messagesService.create(CreateMessageDto);
   }
   @Get('byUserId')

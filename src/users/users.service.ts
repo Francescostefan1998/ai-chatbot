@@ -51,7 +51,6 @@ export class UsersService {
     username: string,
     updateData: Partial<UsersDocument>,
   ): Promise<any> {
-    console.log('inside put user');
     return this.userModel
       .findOneAndUpdate({ username }, updateData, { new: true })
       .exec();
@@ -66,8 +65,6 @@ export class UsersService {
   }
 
   async login(loginUserDto: LoginUserDto): Promise<any> {
-    console.log('inside the login function');
-
     const user = await this.findByUserName(loginUserDto.username);
     if (!user) {
       throw new NotFoundException('User not found');
@@ -89,7 +86,6 @@ export class UsersService {
     return { user, token };
   }
   async register(createUserDto: CreateUserDto): Promise<any> {
-    console.log('inside the register function');
     // Here, create method will throw a ConflictException if username already exists
     const user = await this.create(createUserDto);
 
