@@ -7,7 +7,9 @@ import {
   Body,
   Put,
   Patch,
+  HttpCode,
 } from '@nestjs/common';
+import { LoginUserDto } from './login-user.dto';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './create-user.dto';
 @Controller('users')
@@ -25,7 +27,11 @@ export class UsersController {
   async create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
-
+  @Post('login')
+  @HttpCode(200)
+  async login(@Body() loginUserDto: LoginUserDto): Promise<any> {
+    return this.usersService.login(loginUserDto);
+  }
   @Put(':username')
   async updateUser(
     @Param('username') username: string,
@@ -45,5 +51,9 @@ export class UsersController {
     @Body() updateData: any,
   ) {
     return this.usersService.patchUserByUsername(username, updateData);
+  }
+  @Post('register')
+  async register(@Body() createUserDto: CreateUserDto): Promise<any> {
+    return this.usersService.register(createUserDto);
   }
 }
